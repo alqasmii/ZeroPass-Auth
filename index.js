@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 // Default route so visitors to the root URL get a welcome message
 app.get('/', (req, res) => {
-  res.send('Welcome to ZeroPass Auth API');
+  res.send('This plugin would allow Bubble app developers to let their users log in via a secure “magic link” sent to their email—eliminating the need for traditional passwords. It’s a solution that enhances security and improves user experience, making it very attractive for many applications.');
 });
 
 // Configure the Nodemailer transporter using environment variables for credentials
