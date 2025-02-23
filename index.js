@@ -9,19 +9,19 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Using your provided JWT secret
-const JWT_SECRET = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyX2lkX2hlcmUiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE3NDAzMTAwNDUsImV4cCI6MTc0MDMxMzY0NX0.Tj4_iCMVzgda3SdgYkaieiA9fUy3D0fUpLS4CwKHoqc';
+const JWT_SECRET = process.env.JWT_SECRET;
 const MAGIC_LINK_EXPIRES_IN = '15m';
 
 app.use(bodyParser.json());
 
 // Configure Nodemailer transporter using Gmail
-const transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'zeropass.auth@gmail.com',       // Replace with your Gmail address
-        pass: 'qckh guic urvc wvgw'           // Your provided app password
-    }
-});
+    const transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS
+        }
+      });
 
 // Endpoint to request a magic link
 app.post('/request-magic-link', async (req, res) => {
